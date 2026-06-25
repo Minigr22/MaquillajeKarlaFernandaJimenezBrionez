@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>El rostro y su maquillaje — Guía completa</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --cream:#FAF7F2;
+  --ink:#1A1410;
+  --ink-light:#6B5F54;
+  --rose:#C4747A;
+  --rose-pale:#F0DCDD;
+  --gold:#B8956A;
+  --gold-pale:#F0E8D8;
+  --teal:#4A8C7E;
+  --teal-pale:#D8EDE9;
+  --purple:#7B6EA8;
+  --purple-pale:#E8E4F4;
+  --border:#E2D9CE;
+  --white:#FFFFFF;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Inter',sans-serif;background:var(--cream);color:var(--ink);font-size:16px;line-height:1.7}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(250,247,242,0.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--border);padding:0 2rem}
+.nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;gap:0;height:56px;overflow-x:auto;scrollbar-width:none}
+.nav-inner::-webkit-scrollbar{display:none}
+.nav-link{white-space:nowrap;padding:0 1.25rem;height:56px;display:flex;align-items:center;font-size:13px;font-weight:500;color:var(--ink-light);text-decoration:none;border-bottom:2px solid transparent;transition:all .2s;letter-spacing:.01em}
+.nav-link:hover{color:var(--ink);border-color:var(--border)}
+.nav-link.active{color:var(--ink);border-color:var(--rose)}
+
+/* HERO */
+.hero{max-width:1100px;margin:0 auto;padding:5rem 2rem 4rem;display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center}
+.hero-label{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;color:var(--rose);margin-bottom:1.25rem}
+.hero-title{font-family:'Playfair Display',serif;font-size:clamp(36px,5vw,58px);font-weight:400;line-height:1.1;color:var(--ink);margin-bottom:1.5rem}
+.hero-title em{font-style:italic;color:var(--rose)}
+.hero-body{font-size:16px;color:var(--ink-light);line-height:1.75;max-width:440px;margin-bottom:2rem}
+.hero-stats{display:flex;gap:2rem}
+.stat-num{font-family:'Playfair Display',serif;font-size:32px;font-weight:400;color:var(--ink);display:block}
+.stat-label{font-size:12px;color:var(--ink-light);letter-spacing:.04em}
+.hero-visual{position:relative;display:flex;align-items:center;justify-content:center}
+.face-diagram{width:100%;max-width:380px}
+
+/* FACE SVG ZONES */
+.zone-label-dot{cursor:pointer;transition:all .2s}
+.zone-label-dot:hover circle{r:10}
+.zone-tooltip{opacity:0;transition:opacity .2s;pointer-events:none}
+.zone-label-dot:hover .zone-tooltip{opacity:1}
+
+/* SECTIONS */
+.section{max-width:1100px;margin:0 auto;padding:5rem 2rem;border-top:1px solid var(--border)}
+.section-eyebrow{font-size:11px;font-weight:500;letter-spacing:.15em;text-transform:uppercase;margin-bottom:1rem}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(28px,4vw,42px);font-weight:400;color:var(--ink);margin-bottom:.5rem}
+.section-sub{font-size:15px;color:var(--ink-light);max-width:600px;line-height:1.75;margin-bottom:3rem}
+
+/* PRODUCT CARDS */
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1.5rem;margin-bottom:2.5rem}
+.card{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:1.75rem;transition:transform .2s,box-shadow .2s}
+.card:hover{transform:translateY(-3px);box-shadow:0 8px 24px rgba(26,20,16,.06)}
+.card-icon{width:40px;height:40px;border-radius:10px;display:flex;align-items:center;justify-content:center;margin-bottom:1.25rem;font-size:18px}
+.card-name{font-size:15px;font-weight:500;color:var(--ink);margin-bottom:.625rem}
+.card-why{font-size:13px;color:var(--ink-light);line-height:1.65;margin-bottom:1rem}
+.card-tag{display:inline-block;font-size:11px;font-weight:500;letter-spacing:.04em;padding:4px 10px;border-radius:99px}
+
+/* SCIENCE / INFO BLOCKS */
+.info-block{background:var(--white);border:1px solid var(--border);border-radius:16px;padding:2rem;margin:2rem 0}
+.info-block h3{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--ink);margin-bottom:.75rem}
+.info-block p{font-size:14px;color:var(--ink-light);line-height:1.75}
+
+/* STEPS */
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:1rem;margin:1.5rem 0}
+.step-card{padding:1.25rem;border:1px solid var(--border);border-radius:12px;background:var(--white)}
+.step-num{font-family:'Playfair Display',serif;font-size:28px;font-weight:400;margin-bottom:.5rem}
+.step-title{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:.375rem}
+.step-text{font-size:12px;color:var(--ink-light);line-height:1.6}
+
+/* ORDER STRIP */
+.order-strip{background:var(--ink);border-radius:16px;padding:2rem;margin-top:3rem;overflow-x:auto}
+.order-title{font-family:'Playfair Display',serif;font-size:20px;font-weight:400;color:var(--white);margin-bottom:1.25rem}
+.order-flow{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center}
+.order-badge{padding:5px 14px;border-radius:99px;font-size:12px;font-weight:500;white-space:nowrap}
+.order-arrow{color:rgba(255,255,255,.3);font-size:14px;font-weight:300}
+
+/* MYTH GRID */
+.myth-grid{display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin:1.5rem 0}
+.myth-card{padding:1.25rem;border-radius:12px;border:1px solid var(--border)}
+.myth-tag{font-size:10px;font-weight:500;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.5rem}
+.myth-text{font-size:13px;color:var(--ink);line-height:1.55}
+
+/* SKIN TYPES */
+.skin-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:.875rem;margin:1.5rem 0}
+.skin-card{padding:1rem 1.125rem;border:1px solid var(--border);border-radius:12px;background:var(--white)}
+.skin-name{font-size:13px;font-weight:500;color:var(--ink);margin-bottom:.375rem}
+.skin-desc{font-size:12px;color:var(--ink-light);line-height:1.55}
+
+/* FOOTER */
+footer{border-top:1px solid var(--border);padding:3rem 2rem;text-align:center}
+footer p{font-size:13px;color:var(--ink-light);line-height:1.7}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+  .hero{grid-template-columns:1fr;gap:2.5rem;padding:3rem 1.25rem 2.5rem}
+  .hero-visual{order:-1}
+  .section{padding:3rem 1.25rem}
+  .myth-grid{grid-template-columns:1fr}
+  nav{padding:0 1rem}
+}
+@media(prefers-reduced-motion:reduce){
+  *{transition:none!important;animation:none!important}
+}
+
+/* ACTIVE NAV SCROLL */
+.section[data-section]{scroll-margin-top:56px}
+</style>
+</head>
+<body>
+
+<nav aria-label="Secciones del maquillaje">
+  <div class="nav-inner">
+    <a href="#preparacion" class="nav-link active" data-nav="preparacion">Preparación</a>
+    <a href="#base" class="nav-link" data-nav="base">Base de rostro</a>
+    <a href="#ojos" class="nav-link" data-nav="ojos">Ojos</a>
+    <a href="#labios" class="nav-link" data-nav="labios">Labios</a>
+    <a href="#contorno" class="nav-link" data-nav="contorno">Contorno</a>
+    <a href="#fijacion" class="nav-link" data-nav="fijacion">Fijación</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<header>
+  <div class="hero">
+    <div>
+      <p class="hero-label">Guía de maquillaje facial</p>
+      <h1 class="hero-title">El maquillaje<br>que <em>entiende</em><br>tu piel</h1>
+      <p class="hero-body">Cada producto tiene una razón biológica, óptica o química de existir. Aquí no hay catálogos — solo explicaciones de qué hace cada cosa y por qué importa.</p>
+      <div class="hero-stats">
+        <div><span class="stat-num">6</span><span class="stat-label">áreas del rostro</span></div>
+        <div><span class="stat-num">20+</span><span class="stat-label">productos explicados</span></div>
+        <div><span class="stat-num">0</span><span class="stat-label">ventas aquí</span></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <svg class="face-diagram" viewBox="0 0 380 480" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="Diagrama de zonas del rostro">
+        <!-- Face shape -->
+        <ellipse cx="190" cy="220" rx="130" ry="160" fill="#F5EDE4" stroke="#E2D9CE" stroke-width="1.5"/>
+        <!-- Forehead zone -->
+        <ellipse cx="190" cy="110" rx="95" ry="40" fill="#C4747A" fill-opacity=".12" stroke="#C4747A" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Eye zones -->
+        <ellipse cx="148" cy="188" rx="38" ry="20" fill="#7B6EA8" fill-opacity=".12" stroke="#7B6EA8" stroke-width="1" stroke-dasharray="4 3"/>
+        <ellipse cx="232" cy="188" rx="38" ry="20" fill="#7B6EA8" fill-opacity=".12" stroke="#7B6EA8" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Cheek zones -->
+        <ellipse cx="120" cy="255" rx="35" ry="28" fill="#C4747A" fill-opacity=".15" stroke="#C4747A" stroke-width="1" stroke-dasharray="4 3"/>
+        <ellipse cx="260" cy="255" rx="35" ry="28" fill="#C4747A" fill-opacity=".15" stroke="#C4747A" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Nose zone -->
+        <ellipse cx="190" cy="238" rx="22" ry="28" fill="#B8956A" fill-opacity=".15" stroke="#B8956A" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Lip zone -->
+        <ellipse cx="190" cy="308" rx="42" ry="18" fill="#C4747A" fill-opacity=".2" stroke="#C4747A" stroke-width="1" stroke-dasharray="4 3"/>
+        <!-- Contour zones -->
+        <path d="M80 200 Q65 260 80 320" stroke="#4A8C7E" stroke-width="1.5" stroke-dasharray="5 3" fill="none"/>
+        <path d="M300 200 Q315 260 300 320" stroke="#4A8C7E" stroke-width="1.5" stroke-dasharray="5 3" fill="none"/>
+        <!-- Neck -->
+        <rect x="155" y="370" width="70" height="40" rx="8" fill="#F5EDE4" stroke="#E2D9CE" stroke-width="1"/>
+        <!-- Eyebrows -->
+        <path d="M118 168 Q148 158 178 165" stroke="#1A1410" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <path d="M202 165 Q232 158 262 168" stroke="#1A1410" stroke-width="2.5" stroke-linecap="round" fill="none"/>
+        <!-- Eyes -->
+        <path d="M118 188 Q148 178 178 188 Q148 198 118 188Z" fill="#E8E0D4" stroke="#1A1410" stroke-width="1.2"/>
+        <circle cx="148" cy="188" r="7" fill="#5C4033"/>
+        <circle cx="148" cy="188" r="4" fill="#1A1410"/>
+        <path d="M202 188 Q232 178 262 188 Q232 198 202 188Z" fill="#E8E0D4" stroke="#1A1410" stroke-width="1.2"/>
+        <circle cx="232" cy="188" r="7" fill="#5C4033"/>
+        <circle cx="232" cy="188" r="4" fill="#1A1410"/>
+        <!-- Nose -->
+        <path d="M190 210 L183 248 Q190 255 197 248 L190 210" stroke="#B8956A" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        <!-- Lips -->
+        <path d="M162 302 Q172 296 190 298 Q208 296 218 302" stroke="#C4747A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <path d="M162 302 Q176 316 190 318 Q204 316 218 302" stroke="#C4747A" stroke-width="1.8" fill="none" stroke-linecap="round"/>
+        <!-- Zone labels -->
+        <text x="190" y="106" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#C4747A" font-weight="500">frente · primer</text>
+        <text x="148" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7B6EA8" font-weight="500">ojo</text>
+        <text x="232" y="220" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#7B6EA8" font-weight="500">ojo</text>
+        <text x="95" y="260" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#C4747A" font-weight="500">mejilla</text>
+        <text x="285" y="260" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#C4747A" font-weight="500">mejilla</text>
+        <text x="190" y="242" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#B8956A" font-weight="500">nariz</text>
+        <text x="190" y="332" text-anchor="middle" font-family="Inter,sans-serif" font-size="10" fill="#C4747A" font-weight="500">labios</text>
+        <text x="57" y="265" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4A8C7E" font-weight="500">contorno</text>
+        <text x="323" y="265" text-anchor="middle" font-family="Inter,sans-serif" font-size="9" fill="#4A8C7E" font-weight="500">contorno</text>
+      </svg>
+    </div>
+  </div>
+</header>
+
+<!-- PREPARACIÓN -->
+<section class="section" id="preparacion" data-section="preparacion">
+  <p class="section-eyebrow" style="color:var(--teal)">01 — Antes de todo</p>
+  <h2 class="section-title">Preparación de la piel</h2>
+  <p class="section-sub">Igual que pintas una pared lijada y sellada, no directamente sobre el yeso. Sin preparación, el maquillaje se cuartea, se oxida y dura la mitad.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><path d="M12 2v6M6.3 6.3l4.2 4.2M2 12h6M6.3 17.7l4.2-4.2M12 22v-6M17.7 17.7l-4.2-4.2M22 12h-6M17.7 6.3l-4.2 4.2"/></svg>
+      </div>
+      <div class="card-name">Limpiador facial</div>
+      <div class="card-why">Elimina sebo, suciedad y células muertas. Aplicar maquillaje sobre piel sucia obstruye los poros y hace que los productos no adhieran. El maquillaje no crea suciedad — la <em>atrapa</em>.</div>
+      <span class="card-tag" style="background:var(--teal-pale);color:var(--teal)">Paso cero, no opcional</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--gold-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M8 12h8M12 8v8"/></svg>
+      </div>
+      <div class="card-name">Tónico</div>
+      <div class="card-why">Equilibra el pH de la piel después del limpiador. El pH natural es 4.5–5.5 — los limpiadores lo alteran. Con pH desbalanceado, la hidratación y el maquillaje no penetran igual.</div>
+      <span class="card-tag" style="background:var(--gold-pale);color:var(--gold)">Restaura el equilibrio en segundos</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--rose-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+      </div>
+      <div class="card-name">Hidratante + SPF</div>
+      <div class="card-why">La hidratación evita que el maquillaje "se beba" la piel resecándola. El SPF del maquillaje no protege — la cantidad aplicada es demasiado pequeña para alcanzar el factor declarado en el envase.</div>
+      <span class="card-tag" style="background:var(--rose-pale);color:var(--rose)">El SPF real va aquí, no en la base</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+      </div>
+      <div class="card-name">Primer o prebase</div>
+      <div class="card-why">Crea una superficie uniforme rellenando poros y líneas. No aporta color — su función es puramente técnica: adhesión y durabilidad. Existen tipos: matificante, iluminador y corrector de color.</div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">Elige según tu necesidad específica</span>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h3>Orden correcto de preparación</h3>
+    <div class="steps-grid">
+      <div class="step-card">
+        <div class="step-num" style="color:var(--teal)">01</div>
+        <div class="step-title">Limpia con movimientos circulares suaves</div>
+        <div class="step-text">Nunca frotes — el arrastre mecánico daña la barrera cutánea y activa la producción de sebo.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="color:var(--teal)">02</div>
+        <div class="step-title">Aplica el tónico mientras la piel aún está algo húmeda</div>
+        <div class="step-text">Absorbe mejor los activos en ese estado que sobre piel completamente seca.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="color:var(--teal)">03</div>
+        <div class="step-title">Hidratante de adentro hacia afuera, cuello incluido</div>
+        <div class="step-text">Espera 2 minutos antes del siguiente producto — el tiempo de absorción no es opcional.</div>
+      </div>
+      <div class="step-card">
+        <div class="step-num" style="color:var(--teal)">04</div>
+        <div class="step-title">Primer solo donde lo necesitas</div>
+        <div class="step-text">Si los poros están en la zona T, no lo apliques en mejillas. El primer en exceso crea una textura irreal.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BASE DE ROSTRO -->
+<section class="section" id="base" data-section="base">
+  <p class="section-eyebrow" style="color:var(--gold)">02 — El lienzo</p>
+  <h2 class="section-title">Base de rostro</h2>
+  <p class="section-sub">La base no es para "tapar" la piel — es para unificar el tono y crear un lienzo sobre el que todo lo demás luce mejor. Usarla mal es la razón número uno del efecto máscara.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:var(--rose-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4l3 3"/></svg>
+      </div>
+      <div class="card-name">Corrector (concealer)</div>
+      <div class="card-why">Neutraliza imperfecciones puntuales con teoría de color: el naranja cancela ojeras azuladas, el verde cancela rojeces, el amarillo cancela manchas violáceas. Los colores opuestos en el círculo cromático se anulan entre sí.</div>
+      <span class="card-tag" style="background:var(--rose-pale);color:var(--rose)">Física del color, no magia</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--gold-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><rect x="3" y="3" width="18" height="18" rx="4"/><path d="M3 9h18"/></svg>
+      </div>
+      <div class="card-name">Fondo de maquillaje</div>
+      <div class="card-why">Unifica el tono general. El tono correcto se prueba en la mandíbula, a luz natural, esperando 5 minutos para ver la oxidación. Bajo luz artificial de tienda, todos los tonos parecen iguales.</div>
+      <span class="card-tag" style="background:var(--gold-pale);color:var(--gold)">El tono: pruébalo en la mandíbula</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 7v5l4 2"/></svg>
+      </div>
+      <div class="card-name">Polvo fijador</div>
+      <div class="card-why">Fija la base líquida y matifica las zonas grasas. No agrega cobertura real — su función es textura y durabilidad. Solo en zona T (frente, nariz, barbilla), nunca en mejillas de piel seca o madura.</div>
+      <span class="card-tag" style="background:var(--teal-pale);color:var(--teal)">Solo donde brilla, no en todo el rostro</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div class="card-name">Iluminador (highlighter)</div>
+      <div class="card-why">Refleja la luz en los puntos más elevados del rostro — pómulos, arco de Cupido, punta de nariz, lagrimal. La luz rebota más en superficies convexas: el highlighter imita la luz natural en esas zonas salientes.</div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">Solo en puntos convexos del rostro</span>
+    </div>
+  </div>
+
+  <div class="skin-grid">
+    <div class="skin-card">
+      <div class="skin-name">Piel grasa</div>
+      <div class="skin-desc">Bases oil-free, acabado mate o semimate. El sebo disuelve las fórmulas cremosas en horas.</div>
+    </div>
+    <div class="skin-card">
+      <div class="skin-name">Piel seca</div>
+      <div class="skin-desc">Bases con ácido hialurónico, acabado satinado. Las fórmulas en polvo acentúan las líneas secas.</div>
+    </div>
+    <div class="skin-card">
+      <div class="skin-name">Piel mixta</div>
+      <div class="skin-desc">Cobertura media, acabado natural. Se puede matificar solo en zona T con polvo translúcido.</div>
+    </div>
+    <div class="skin-card">
+      <div class="skin-name">Piel madura</div>
+      <div class="skin-desc">Bases ligeras e hidratantes. La cobertura total se asienta en líneas finas haciéndolas más visibles.</div>
+    </div>
+  </div>
+</section>
+
+<!-- OJOS -->
+<section class="section" id="ojos" data-section="ojos">
+  <p class="section-eyebrow" style="color:var(--purple)">03 — El foco</p>
+  <h2 class="section-title">Ojos</h2>
+  <p class="section-sub">El cerebro procesa la zona de los ojos en los primeros 33 milisegundos de contacto visual. Cada producto actúa sobre los estímulos visuales que usamos para leer emociones y vitalidad.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg>
+      </div>
+      <div class="card-name">Prebase de ojos</div>
+      <div class="card-why">El párpado produce sebo en exceso y tiene movimiento constante. La prebase crea una superficie seca para que las sombras no se plieguen en horas. Sin ella, desaparecen en 2-3 horas. Con ella, el doble o más.</div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">Multiplica la duración x2</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--rose-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v8M8 12h8"/></svg>
+      </div>
+      <div class="card-name">Sombra de ojos</div>
+      <div class="card-why">Los tonos oscuros hacen "retroceder" visualmente las zonas, los claros las "traen adelante". Oscuro en el pliegue = ojo más profundo y grande. Claro en el lagrimal = ojo más abierto. Es óptica pura.</div>
+      <span class="card-tag" style="background:var(--rose-pale);color:var(--rose)">Principio de luz y sombra aplicado</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><path d="M5 12h14"/></svg>
+      </div>
+      <div class="card-name">Delineador (eyeliner)</div>
+      <div class="card-why">Define el contorno del ojo modificando la forma percibida. Ojos pequeños: delinear solo el tercio exterior los alarga. Ojos caídos: la línea sube hacia la cola. Es geometría aplicada al ojo.</div>
+      <span class="card-tag" style="background:var(--teal-pale);color:var(--teal)">Geometría visual, no solo color</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--gold-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M3 6l9 6 9-6M3 12l9 6 9-6"/></svg>
+      </div>
+      <div class="card-name">Rímel (máscara de pestañas)</div>
+      <div class="card-why">Polímeros que se adhieren al cabello de la pestaña y ceras que le dan cuerpo. Técnica: dos capas en zigzag desde la raíz, no desde la punta. La raíz define el rizo, la punta alarga.</div>
+      <span class="card-tag" style="background:var(--gold-pale);color:var(--gold)">Desde la raíz en zigzag, siempre</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M5 17H3a2 2 0 01-2-2V5a2 2 0 012-2h16a2 2 0 012 2v10a2 2 0 01-2 2h-2"/><polygon points="12 15 17 21 7 21 12 15"/></svg>
+      </div>
+      <div class="card-name">Cejas</div>
+      <div class="card-why">El marco del ojo y la estructura que le da expresión al tercio superior del rostro. Tres puntos clave: inicio alineado con el lateral de la nariz, arco sobre la pupila, cola desde la nariz hasta la comisura externa del ojo.</div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">Tres puntos, forma perfecta</span>
+    </div>
+  </div>
+</section>
+
+<!-- LABIOS -->
+<section class="section" id="labios" data-section="labios">
+  <p class="section-eyebrow" style="color:var(--rose)">04 — La expresión</p>
+  <h2 class="section-title">Labios</h2>
+  <p class="section-sub">Los labios carecen de melanina protectora y glándulas sebáceas. Se resecan más rápido que cualquier otra zona del rostro — cualquier producto labial que no hidrate antes de colorear trabaja sobre una base inestable.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:var(--rose-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <div class="card-name">Bálsamo labial</div>
+      <div class="card-why">Hidrata e impermeabiliza antes del color. Sin él, el labial seca más el tejido porque sus pigmentos y alcoholes extraen la humedad existente. Ingredientes útiles: manteca de karité, lanolina, vitamina E. Evitar mentol — refresca pero reseca.</div>
+      <span class="card-tag" style="background:var(--rose-pale);color:var(--rose)">Va siempre antes del labial</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--gold-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5M2 12l10 5 10-5"/></svg>
+      </div>
+      <div class="card-name">Delineador de labios</div>
+      <div class="card-why">Define el contorno e impide que el labial sangre hacia las líneas periorales. Rellenar todo el labio con el delineador antes del labial lo convierte en base — el color dura el doble porque tiene donde adherirse.</div>
+      <span class="card-tag" style="background:var(--gold-pale);color:var(--gold)">Rellena todo el labio para más duración</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--rose-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"><rect x="2" y="9" width="20" height="12" rx="4"/><path d="M8 9V7a4 4 0 018 0v2"/></svg>
+      </div>
+      <div class="card-name">Labial y gloss</div>
+      <div class="card-why">El gloss refleja la luz haciendo los labios parecer más carnosos — no los agranda físicamente, pero el brillo óptico los hace parecer más llenos. Mate: labios más definidos. Gloss: labios más grandes visualmente. Satinado: el equilibrio.</div>
+      <span class="card-tag" style="background:var(--rose-pale);color:var(--rose)">El finish cambia el tamaño percibido</span>
+    </div>
+  </div>
+
+  <div class="myth-grid">
+    <div class="myth-card" style="background:var(--rose-pale)">
+      <div class="myth-tag" style="color:var(--rose)">Mito frecuente</div>
+      <div class="myth-text">"El labial oscuro hace los labios parecer más pequeños"</div>
+    </div>
+    <div class="myth-card" style="background:var(--teal-pale)">
+      <div class="myth-tag" style="color:var(--teal)">La realidad</div>
+      <div class="myth-text">El tamaño percibido lo define el contorno, no el color. Un oscuro bien delineado agranda tanto como uno claro.</div>
+    </div>
+    <div class="myth-card" style="background:var(--rose-pale)">
+      <div class="myth-tag" style="color:var(--rose)">Mito frecuente</div>
+      <div class="myth-text">"El nude es igual para todas las pieles"</div>
+    </div>
+    <div class="myth-card" style="background:var(--teal-pale)">
+      <div class="myth-tag" style="color:var(--teal)">La realidad</div>
+      <div class="myth-text">El nude es relativo al tono propio. Debe ser uno o dos tonos más claro que tu labio natural, no un tono universal.</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTORNO -->
+<section class="section" id="contorno" data-section="contorno">
+  <p class="section-eyebrow" style="color:var(--gold)">05 — Estructura y luz</p>
+  <h2 class="section-title">Contorno y volumen</h2>
+  <p class="section-sub">El contouring existe desde que el teatro necesitaba cambiar caras bajo luz artificial. No es tendencia — es aplicación de principios básicos de luz y sombra sobre la tridimensionalidad del rostro.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:var(--gold-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 2a10 10 0 010 20"/></svg>
+      </div>
+      <div class="card-name">Bronzer</div>
+      <div class="card-why">Simula el efecto que tiene el sol sobre el rostro: las zonas más expuestas (frente, punta de nariz, pómulos) se oscurecen naturalmente. Dónde NO ponerlo: parte baja de mejillas, debajo de la nariz y cuello — el sol no llega ahí.</div>
+      <span class="card-tag" style="background:var(--gold-pale);color:var(--gold)">Donde el sol toca, no en todo el rostro</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--rose-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--rose)" stroke-width="2" stroke-linecap="round"><path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"/></svg>
+      </div>
+      <div class="card-name">Rubor (blush)</div>
+      <div class="card-why">Imita el enrojecimiento natural que ocurre cuando hay circulación activa en las mejillas. Evolutivamente asociamos ese color con salud, juventud y vitalidad. Es el producto que más naturalidad aporta al maquillaje completo.</div>
+      <span class="card-tag" style="background:var(--rose-pale);color:var(--rose)">Donde sonrojarías naturalmente</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><polygon points="12 2 22 20 2 20"/></svg>
+      </div>
+      <div class="card-name">Contorno</div>
+      <div class="card-why">Crea sombras donde los huesos proyectan sombra naturalmente. El color correcto es grisáceo-marrón, nunca naranja — la sombra del hueso no tiene tono dorado. Si lo tiene, es bronzer, no contorno.</div>
+      <span class="card-tag" style="background:var(--teal-pale);color:var(--teal)">Grisáceo, nunca naranja</span>
+    </div>
+  </div>
+
+  <div class="info-block">
+    <h3>Por qué funciona: física de la luz</h3>
+    <p>El cerebro deduce la forma tridimensional de un objeto por cómo la luz lo ilumina. Las zonas iluminadas parecen avanzar hacia el observador, las oscuras retroceder. El contouring introduce esas sombras manualmente, engañando la percepción visual para que el rostro parezca más esculpido. No cambia el rostro — cambia cómo el cerebro lo interpreta en tiempo real.</p>
+  </div>
+</section>
+
+<!-- FIJACIÓN -->
+<section class="section" id="fijacion" data-section="fijacion">
+  <p class="section-eyebrow" style="color:var(--teal)">06 — El cierre</p>
+  <h2 class="section-title">Fijación y duración</h2>
+  <p class="section-sub">El maquillaje bien aplicado dura sin fijadores si la preparación fue correcta. Los fijadores son un seguro extra, no un parche para errores de base.</p>
+
+  <div class="cards">
+    <div class="card">
+      <div class="card-icon" style="background:var(--teal-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--teal)" stroke-width="2" stroke-linecap="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+      </div>
+      <div class="card-name">Spray fijador</div>
+      <div class="card-why">Fusiona todas las capas de maquillaje dándoles cohesión y reduciendo el aspecto "en polvo". Sus polímeros crean una película fina que sella sin tapar poros. Existen tres tipos: matificante, luminoso y larga duración — no son intercambiables.</div>
+      <span class="card-tag" style="background:var(--teal-pale);color:var(--teal)">Elige según tu tipo de piel</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--gold-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--gold)" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M12 8v4"/><circle cx="12" cy="16" r="1" fill="var(--gold)"/></svg>
+      </div>
+      <div class="card-name">Polvo traslúcido</div>
+      <div class="card-why">Absorbe el exceso de aceite sin agregar color. A diferencia del polvo con pigmento, no altera el tono del maquillaje debajo — solo neutraliza el brillo y sella. Técnica baking: dejarlo 5-10 min y retirar para cobertura extrema.</div>
+      <span class="card-tag" style="background:var(--gold-pale);color:var(--gold)">Sin pigmento = sin alterar el tono</span>
+    </div>
+    <div class="card">
+      <div class="card-icon" style="background:var(--purple-pale)">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="var(--purple)" stroke-width="2" stroke-linecap="round"><path d="M12 2.69l5.66 5.66a8 8 0 11-11.31 0z"/></svg>
+      </div>
+      <div class="card-name">Agua termal</div>
+      <div class="card-why">No fija — hidrata y refresca el maquillaje durante el día. Sus minerales (sílice, selenio) dan confort sin alterar el maquillaje. Es diferente al spray fijador. Úsala a mitad del día para "reset" sin retocar.</div>
+      <span class="card-tag" style="background:var(--purple-pale);color:var(--purple)">Hidrata a mitad del día, no fija</span>
+    </div>
+  </div>
+
+  <div class="order-strip" role="region" aria-label="Orden completo de maquillaje">
+    <div class="order-title">Orden completo de maquillaje</div>
+    <div class="order-flow">
+      <span class="order-badge" style="background:rgba(74,140,126,.25);color:#A8D8D0">Limpieza</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(74,140,126,.25);color:#A8D8D0">Tónico</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(74,140,126,.25);color:#A8D8D0">Hidratante + SPF</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(74,140,126,.25);color:#A8D8D0">Primer</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(184,149,106,.25);color:#D4B88A">Corrector</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(184,149,106,.25);color:#D4B88A">Base</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(184,149,106,.25);color:#D4B88A">Polvo</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(123,110,168,.25);color:#C4B8E8">Cejas</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(123,110,168,.25);color:#C4B8E8">Sombras</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(123,110,168,.25);color:#C4B8E8">Delineador</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(123,110,168,.25);color:#C4B8E8">Rímel</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(184,149,106,.25);color:#D4B88A">Bronzer</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(196,116,122,.25);color:#E8A4A8">Blush</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(74,140,126,.25);color:#A8D8D0">Contorno</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(196,116,122,.25);color:#E8A4A8">Labios</span>
+      <span class="order-arrow">→</span>
+      <span class="order-badge" style="background:rgba(74,140,126,.25);color:#A8D8D0">Spray fijador</span>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <p>Una guía sobre el <em>por qué</em> detrás de cada producto.<br>Sin ventas, sin marcas, sin tendencias — solo la lógica del maquillaje.</p>
+</footer>
+
+<script>
+// Active nav on scroll
+const sections = document.querySelectorAll('[data-section]');
+const navLinks = document.querySelectorAll('.nav-link');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const id = entry.target.getAttribute('data-section');
+      navLinks.forEach(l => l.classList.toggle('active', l.getAttribute('data-nav') === id));
+    }
+  });
+}, { rootMargin: '-40% 0px -55% 0px' });
+
+sections.forEach(s => observer.observe(s));
+</script>
+</body>
+</html>
